@@ -3288,14 +3288,14 @@ hr {
 .btn-primary:active,
 .btn-primary:focus {
     color: #fff;
-    background: #B80B0C;
-    border-color: #B80B0C
+    background: #007BFF;
+    border-color: #007BFF
 }
 
 .btn-primary:hover {
     color: #fff;
-    background: #000;
-    border-color: #000
+    background: #0070AA;
+    border-color: #0070AA
 }
 
 .button-group {
@@ -10949,7 +10949,8 @@ html.tablet .ui-to-top {
 }
 
 .rd-navbar {
-    background: #fff
+    background: #fff;
+    box-shadow: 0 13px 16px 0 rgba(0, 0, 0, .13);
 }
 
 .rd-navbar-toggle {
@@ -18942,4 +18943,10 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     .partners-content ul{
         font-size: 16px;
     }
+    .avatar {
+        vertical-align: middle;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
 }

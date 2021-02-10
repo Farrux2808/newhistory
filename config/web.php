@@ -90,6 +90,8 @@ $config = [
                 'search' => 'site/search',
                 'admin' => 'admin/default',
                 'about' => 'site/about',
+                'articles' => 'site/articles',
+                'article' => 'site/article',
                 'map' => 'site/map',
                // '<alias:[\w\-]+>' => 'site/category',
             ],
