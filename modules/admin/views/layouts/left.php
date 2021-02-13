@@ -32,16 +32,11 @@
                 'items' => [
                     ['label' => 'Навигация', 'options' => ['class' => 'header']],
                     ['label' => 'Главная', 'icon' => 'dashboard', 'url' => ['/admin']],
-                    ['label' => 'Пользователи', 'icon' => 'dashboard', 'url' => ['/admin/user']],
                     ['label' => 'Регионы', 'icon' => 'dashboard', 'url' => ['/admin/region']],
-                    ['label' => 'Подарочные товары', 'icon' => 'dashboard', 'url' => ['/admin/gift']],
-                    ['label' => 'CallCenter', 'icon' => 'dashboard', 'url' => ['/admin/call']],
                     ['label' => 'Категории', 'icon' => 'dashboard', 'url' => ['/admin/category']],
-                    ['label' => 'Партнеры', 'icon' => 'dashboard', 'url' => ['/admin/service']],
-                    ['label' => 'Photo', 'icon' => 'dashboard', 'url' => ['/admin/pics']],
-                    ['label' => 'Слайдер', 'icon' => 'dashboard', 'url' => ['/admin/image']],
-                    ['label' => 'Config', 'icon' => 'dashboard', 'url' => ['/admin/config']],
-                    ['label' => 'User Balace', 'icon' => 'dashboard', 'url' => ['/admin/userbalance']],
+                    ['label' => 'Пользователи', 'icon' => 'dashboard', 'url' => ['/admin/users']],
+                    ['label' => 'Статьи', 'icon' => 'dashboard', 'url' => ['/admin/articles']],
+
                 ],
             ]
         ) ?>
