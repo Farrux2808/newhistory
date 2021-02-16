@@ -2,6 +2,8 @@
 $lang = Yii::$app->language;
 $this->title = 'Gumanitar';
 use app\models\Service;
+use app\models\Articles;
+use app\models\Faxriylar;
 use yii\widgets\ActiveForm; 
 ?>
 <div class="site-index">
@@ -32,22 +34,22 @@ use yii\widgets\ActiveForm;
             Oxirgi qo'shilganlar
         </div>
         <?php
-            $articles = array('maqola nomi','maqola nomi','maqola nomi');
+            $articles = Articles::find()->limit(6)->all();
             foreach ($articles as $article) {
             ?>
         <div class="row" style="padding: 5px">
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title"><?=$article?></h5>
+                        <h5 class="card-title"><?=$article->title?></h5>
                         <div class="row" style="padding: 0px 10px 20px 20px">
-                            <p class="card-text">avtor</p>
+                            <p class="card-text"><?php $article->avtor?></p>
                             <a href="#" class="btn btn-primary" style=" position: absolute; right: 20px;">batafsil</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <!-- <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title"><?=$article?></h5>
@@ -57,7 +59,7 @@ use yii\widgets\ActiveForm;
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <?php
             }
@@ -68,17 +70,17 @@ use yii\widgets\ActiveForm;
             Faxriylar
         </div>
         <?php
-            $veterans = array('maqola nomi','maqola nomi');
+            $veterans = Faxriylar::find()->all();
             foreach ($veterans as $veteran) {
             ?>
         <div class="card-deck" style="padding: 5px">
             <div class="card">
                 <img src="/web/img/2.jpeg" alt="Avatar" class="avatar center">
                 <div class="card-body">
-                <h5 class="card-title center">Card title</h5>
+                <h5 class="card-title center"><?php $veteran->fio?></h5>
                 </div>
             </div>
-            <div class="card">
+            <!-- <div class="card">
                 <img src="/web/img/2.jpeg" alt="Avatar" class="avatar center">
                 <div class="card-body">
                 <h5 class="card-title center">Card title</h5>
@@ -89,7 +91,7 @@ use yii\widgets\ActiveForm;
                 <div class="card-body">
                 <h5 class="card-title center">Card title</h5>
                 </div>
-            </div>
+            </div> -->
         </div>
         <?php
             }
