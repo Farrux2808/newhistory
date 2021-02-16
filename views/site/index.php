@@ -1,6 +1,6 @@
 <?php
 $lang = Yii::$app->language;
-$this->title = 'Humanitar';
+$this->title = 'Gumanitar';
 use app\models\Service;
 use yii\widgets\ActiveForm; 
 ?>
