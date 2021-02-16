@@ -7,6 +7,7 @@ use app\widgets\Alert;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use app\models\Category;
 use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
@@ -46,7 +47,7 @@ AppAsset::register($this);
                             <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                             <!-- RD Navbar Brand-->
                             <div class="rd-navbar-brand"><a class="brand" href="<?= Url::to('/') ?>">
-                                    <h3> Humanitar </h3></a>
+                                    <h3> Gumanitar </h3></a>
                             </div>
                         </div>
                         <div class="rd-navbar-main-element">
@@ -54,22 +55,30 @@ AppAsset::register($this);
                                 <!-- RD Navbar Nav-->
                                 <ul class="rd-navbar-nav">
                                     <div class="dropdown">
-                                        <li class="rd-nav-link"><?= Yii::t('app', 'Maqolalar') ?></li>
-                                        <div class="dropdown-content">
-                                            <a href="<?= Url::to(['/articles', 'id' => 1]) ?>"><?= Yii::t('app', 'diniy') ?></a>
-                                            <a href="<?= Url::to(['/articles', 'id' => 1]) ?>"><?= Yii::t('app', 'ilmiy') ?></a>
-                                            <a href="<?= Url::to(['/articles', 'id' => 1]) ?>"><?= Yii::t('app', 'badiy') ?></a>
-                                        </div>
+                                    <?php
+                                        $asosiy = Category::find()->where(['category_id'=>NULL])->all();
+                                        foreach($asosiy as $item) {
+                                            
+                                            ?>
+                                            <li class="rd-nav-link"><?= Yii::t('app', $item->category) ?></li>
+                                            <div class="dropdown-content">
+                                            <?php
+
+                                            $vaqtincha = Category::find()->where(['category_id'=>$item->id])->all();
+                                            foreach ($vaqtincha as $value) {
+                                            ?>
+                                                
+                                                <a href="<?= Url::to(['/articles', 'id' => $value->id]) ?>"><?= Yii::t('app', $value->category) ?></a>
+                                                
+                                            <?php
+                                            }
+                                            ?>
+                                            </div>
+                                            <?php
+                                        }
+                                    ?>
                                     </div>
-                                    <div class="dropdown">
-                                        <li class="rd-nav-link"><?= Yii::t('app', 'Kitoblar') ?></li>
-                                        <div class="dropdown-content">
-                                            <a href="<?= Url::to(['/articles', 'id' => 1]) ?>"><?= Yii::t('app', 'diniy') ?></a>
-                                            <a href="<?= Url::to(['/articles', 'id' => 1]) ?>"><?= Yii::t('app', 'badiy') ?></a>
-                                            <a href="<?= Url::to(['/articles', 'id' => 1]) ?>"><?= Yii::t('app', 'ilmiy') ?></a>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown">
+                                    <!-- <div class="dropdown">
                                         <li class="rd-nav-link"><?= Yii::t('app', 'Disertatsiya') ?></li>
                                         <div class="dropdown-content">
                                             <a href="<?= Url::to(['/articles', 'id' => 1]) ?>"><?= Yii::t('app', 'diniy') ?></a>
@@ -84,7 +93,7 @@ AppAsset::register($this);
                                             <a href="#"><?= Yii::t('app', 'badiy') ?></a>
                                             <a href="#"><?= Yii::t('app', 'ilmiy') ?></a>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- <li class="rd-nav-item">
                                         <a class="rd-nav-link" href="<?= Url::to([Yii::$app->request->pathInfo, 'language' => 'ru']) ?>">RU</a>/
                                         <a class="rd-nav-link" href="<?= Url::to([Yii::$app->request->pathInfo, 'language' => 'uz']) ?>">UZ</a>

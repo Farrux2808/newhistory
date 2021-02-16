@@ -67,7 +67,6 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $myMenu = Category::find();
         return $this->render('index', [
         ]);
     }

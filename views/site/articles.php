@@ -2,6 +2,7 @@
 $lang = Yii::$app->language;
 $this->title = 'Humanitar';
 use app\models\Service;
+use app\models\Category;
 use yii\widgets\ActiveForm; 
 ?>
 <div class="site-index">
@@ -9,10 +10,6 @@ use yii\widgets\ActiveForm;
         <div class="card-header">
             Oxirgi qo'shilganlar
         </div>
-        <?php
-            $articles = array('maqola nomi','maqola nomi','maqola nomi');
-            foreach ($articles as $article) {
-            ?>
         <div class="row" style="padding: 5px">
             <div class="col-sm-6">
                 <div class="card">
@@ -38,7 +35,7 @@ use yii\widgets\ActiveForm;
             </div>
         </div>
         <?php
-            }
+            // }
         ?>
     </div>
 </div>
