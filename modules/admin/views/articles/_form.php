@@ -22,7 +22,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'avtor')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'url')->fileInput() ?>
 
     <?= $form->field($model, 'category_id')->textInput() ?>
 
