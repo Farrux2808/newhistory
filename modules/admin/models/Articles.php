@@ -1,6 +1,7 @@
 <?php
 
 namespace app\models;
+use yii\web\UploadedFile;
 
 use Yii;
 
@@ -27,6 +28,11 @@ class Articles extends \yii\db\ActiveRecord
     }
 
     /**
+     * @var UploadedFile
+     */
+    public $url;
+
+    /**
      * {@inheritdoc}
      */
     public function rules()
@@ -36,8 +42,19 @@ class Articles extends \yii\db\ActiveRecord
             [['title'], 'string'],
             [['userId', 'editionCount', 'category_id'], 'integer'],
             [['edition', 'avtor'], 'string', 'max' => 200],
-            [['url'], 'string', 'max' => 300],
+            [['url'], 'file', 'skipOnEmpty' => false, 'extensions' => 'pdf'],
         ];
+    }
+
+    public function upload()
+    {
+        if ($this->validate()) {
+            mkdir('uploads', 0700)
+            $this->url->saveAs('uploads/' . $this->url->baseName . '.' . $this->url->extension);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
