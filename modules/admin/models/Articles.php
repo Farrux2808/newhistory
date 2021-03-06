@@ -41,16 +41,22 @@ class Articles extends \yii\db\ActiveRecord
             [['title', 'userId', 'edition', 'editionCount', 'avtor', 'url', 'category_id'], 'required'],
             [['title'], 'string'],
             [['userId', 'editionCount', 'category_id'], 'integer'],
-            [['edition', 'avtor'], 'string', 'max' => 200],
-            [['url'], 'file', 'skipOnEmpty' => false, 'extensions' => 'pdf'],
+            [['edition', 'avtor', 'url'], 'string', 'max' => 300],
+            [['file'], 'file', 'extensions' => 'pdf'],
         ];
     }
 
     public function upload()
     {
         if ($this->validate()) {
-            mkdir('uploads', 0700)
-            $this->url->saveAs('uploads/' . $this->url->baseName . '.' . $this->url->extension);
+            if (file_exists($this->url)  && !empty($this->file)){
+                unlink($this->url);
+            }
+            
+            $path = 'uploads/' . uniqid(md5($this->file->baseName)) . '.' . $this->url->extension;
+            $this->file->saveAs($path);
+            $this->url = $path;
+            $this->save(false);
             return true;
         } else {
             return false;

@@ -68,11 +68,9 @@ class ArticlesController extends Controller
         $model = new Articles();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->file = UploadedFile::getInstance($model, 'file');
+            $model->upload();
             return $this->redirect(['view', 'id' => $model->id]);
-        }
-        $model->url = UploadedFile::getInstance($model, 'url');
-        if ($model->upload()) {
-            // file is uploaded successfully
         }
         return $this->render('create', [
             'model' => $model,
@@ -92,6 +90,8 @@ class ArticlesController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->file = UploadedFile::getInstance($model, 'file');
+            $model->upload();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

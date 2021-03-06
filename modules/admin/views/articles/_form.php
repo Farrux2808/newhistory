@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\file\FileInput;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Articles */
@@ -22,7 +23,14 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'avtor')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'url')->fileInput() ?>
+    <?= $form->field($model, 'file')->widget(FileInput::classname(), [
+        'pluginOptions' => [
+            'showPreview' => false,
+            'showCaption' => true,
+            'showRemove' => true,
+            'showUpload' => false
+        ]
+    ]); ?>
 
     <?= $form->field($model, 'category_id')->textInput() ?>
 
